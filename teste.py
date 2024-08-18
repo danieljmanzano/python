@@ -1,3 +1,4 @@
+#fazendo qualquer coisa para começar a aprender a sintaxe, nem sei o que é isso ok
 from math import *
 
 def func(x):
