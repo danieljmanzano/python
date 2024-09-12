@@ -1,0 +1,1 @@
+coisas de python que to tentando fazer. inclui atividades de fisica, exercicios para exercitar a linguagem (aprendendo nas aulas do data) e uns notebook aí pra fisica. subi a venv sem querer, nao sei o que faer a respeito show de bola
