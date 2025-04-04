@@ -66,28 +66,24 @@ class Table:
 
     def print_table(self):
         lado, tabuleiro = self.lado, self.tabuleiro
-        # Garante que lado seja inteiro
         lado = int(lado)
         
-        # Calcula a largura de cada célula baseado no maior número
-        max_num = max(abs(num) for num in tabuleiro) if tabuleiro else 0
-        cell_width = len(str(max_num)) + 2  # +2 para espaçamento
+        num_max = max(tabuleiro) if tabuleiro else 0 # pega o numero maximo do tabuleiro pra decidir o tamanho de cada espaço do print
+        largura = len(str(num_max)) + 2 # largura do espaço the fato
         
-        # Cria a linha divisória
-        linha_divisoria = "+" + ("-" * cell_width + "+") * lado
+        linha_divisoria = "+" + ("-" * largura + "+") * lado
         
-        for i in range(lado):  # Para cada linha da matriz imaginária
+        for i in range(lado):  
             print(linha_divisoria)
-            print("|", end="")
-            for j in range(lado):  # Para cada coluna da matriz imaginária
+            print("|", end="") # isso aqui serve pra nao quebrar linha
+            for j in range(lado): 
                 index = i * lado + j
-                # Formata o número centralizado na célula
-                print(f"{tabuleiro[index]:^{cell_width}}|", end="")
-            print()  # Nova linha após cada linha do tabuleiro
+                print(f"{tabuleiro[index]:^{largura}}|", end="") # isso aqui centraliza o tabuleiro[index] com base na largura
+            print()  
         
         print(linha_divisoria)
-        print()  # Linha vazia adicional para separação    
-
+        print()  
+        
 
     def resultado(self):
         tam, tabuleiro = self.tam, self.tabuleiro
