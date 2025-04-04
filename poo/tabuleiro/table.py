@@ -18,50 +18,50 @@ class Table:
         self.tam = tam
         self.lado = int(sqrt(tam))
 
-        i = 0 # aqui em baixo defino tudo referente à posição vazia do tabuleiro
-        for i in range(tam):
-            if tabuleiro[i] == 0:
-                self.i = i % self.lado
-                self.j = i / self.lado
-                self.pos = i
+        # aqui em baixo defino tudo referente à posição vazia do tabuleiro
+        for k in range(tam):
+            if tabuleiro[k] == 0:
+                self.i = k % self.lado
+                self.j = int(k / self.lado)
+                self.pos = k
                 break
         
     def move_up(self):
         # para nao ter que repetir os self toda vez, faço essa definiçao aqui de baixo
         tabuleiro, pos, lado, j = self.tabuleiro, self.pos, self.lado, self.j 
         
-        if j != lado - 1:
-            j += 1
-            tabuleiro[pos] = tabuleiro[pos + lado]
-            tabuleiro[pos + lado] = 0
-            pos += lado
+        if (j != lado - 1):
+            self.j += 1
+            self.tabuleiro[pos] = tabuleiro[pos + lado]
+            self.tabuleiro[pos + lado] = 0
+            self.pos += lado
     
     def move_down(self):
         tabuleiro, pos, lado, j = self.tabuleiro, self.pos, self.lado, self.j
         
-        if j != 0: 
-            j -= 1
-            tabuleiro[pos] = tabuleiro[pos - lado]
-            tabuleiro[pos - lado] = 0
-            pos -= lado
+        if (j != 0): 
+            self.j -= 1
+            self.tabuleiro[pos] = tabuleiro[pos - lado]
+            self.tabuleiro[pos - lado] = 0
+            self.pos -= lado
 
     def move_left(self):
         tabuleiro, pos, lado, i = self.tabuleiro, self.pos, self.lado, self.i
         
-        if i != lado - 1:
-            i += 1
-            tabuleiro[pos] = tabuleiro[pos + 1]
-            tabuleiro[pos + 1] = 0
-            pos += 1
+        if (i != lado - 1):
+            self.i += 1
+            self.tabuleiro[pos] = tabuleiro[pos + 1]
+            self.tabuleiro[pos + 1] = 0
+            self.pos += 1
 
     def move_right(self):
         tabuleiro, pos, i = self.tabuleiro, self.pos, self.i
 
-        if i != 0:
-            i -= 1
-            tabuleiro[pos] = tabuleiro[pos - 1]
-            tabuleiro[pos - 1] = 0
-            pos -= 1
+        if (i != 0):
+            self.i -= 1
+            self.tabuleiro[pos] = tabuleiro[pos - 1]
+            self.tabuleiro[pos - 1] = 0
+            self.pos -= 1
 
 
     def print_table(self):
@@ -86,7 +86,7 @@ class Table:
             print()  # Nova linha após cada linha do tabuleiro
         
         print(linha_divisoria)
-        print()  # Linha vazia adicional para separação      
+        print()  # Linha vazia adicional para separação    
 
 
     def resultado(self):

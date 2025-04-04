@@ -10,12 +10,10 @@ tam = len(vetor)
 
 t = Table()
 t.set_table(vetor, tam)
+t.print_table()
 
-# Lê os comandos de movimento
-comandos = input().strip()  # Lê a linha de comandos (ex: "dr")
-
-# Executa cada comando
-for cmd in comandos:
+comandos = input().strip() # le a linha de comandos. o '.strip' meio que formata a entrada de um jeito mais daora, tira espaço extra do inicio e fim
+for cmd in comandos: # vai andando no comandos pegando cada letra 
     if cmd == 'u':
         t.move_up()
     elif cmd == 'd':
@@ -25,10 +23,10 @@ for cmd in comandos:
     elif cmd == 'r':
         t.move_right()
     else:
-        continue  # Ignora comandos inválidos
+        continue # ignora comando invalido
     
-    t.print_table()  # Mostra o tabuleiro após cada movimento
+    t.print_table() # toda iteração printa a tabela
 
-# Verifica o resultado final
+
 print(f"Posicao final: {t.resultado()}")
 
