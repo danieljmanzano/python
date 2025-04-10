@@ -18,7 +18,7 @@ class Table:
         self.tam = tam
         self.lado = int(sqrt(tam))
 
-        # aqui em baixo defino tudo referente à posição vazia do tabuleiro
+        # aqui embaixo defino tudo referente à posição vazia do tabuleiro
         for k in range(tam):
             if tabuleiro[k] == 0:
                 self.i = k % self.lado
@@ -64,22 +64,34 @@ class Table:
             self.pos -= 1
 
 
+    # para printar o tabuleiro, tenho que formatar a saída de um jeito muito específico de acordo com o exercício
     def print_table(self):
         lado, tabuleiro = self.lado, self.tabuleiro
-        lado = int(lado)
-        
-        num_max = max(tabuleiro) if tabuleiro else 0 # pega o numero maximo do tabuleiro pra decidir o tamanho de cada espaço do print
-        largura = len(str(num_max)) + 2 # largura do espaço the fato
-        
-        linha_divisoria = "+" + ("-" * largura + "+") * lado
+        lado = int(lado) # garantindo que o lado seja inteiro (sempre é, mas pra dar certo de usar o lado ali nos 'range' de baixo sem dar erro)
+                
+        linha_divisoria = "+" + ("------+") * lado
         
         for i in range(lado):  
             print(linha_divisoria)
-            print("|", end="") # isso aqui serve pra nao quebrar linha
+            print("|", end="") # isso aqui (end ="") serve pra nao quebrar linha
+
             for j in range(lado): 
                 index = i * lado + j
-                print(f"{tabuleiro[index]:^{largura}}|", end="") # isso aqui centraliza o tabuleiro[index] com base na largura
-            print()  
+
+                if (tabuleiro[index] != 0): # para centralizar o número do "jeito certo" (de acordo com o exercício), fiz casos em que ele pode ter até 4 dígitos
+                    if (len(str(tabuleiro[index])) == 1):
+                        print(f"   {tabuleiro[index]}  |", end="")
+                    elif (len(str(tabuleiro[index])) == 2):
+                        print(f"  {tabuleiro[index]}  |", end="")
+                    elif (len(str(tabuleiro[index])) == 3): 
+                        print(f"  {tabuleiro[index]} |", end="")
+                    else:   
+                        print(f" {tabuleiro[index]} |", end="")
+
+                else: # caso seja 0, imprimo o espaço vazio com a largura correta
+                    print("      |", end="")
+
+            print() # quebra linha
         
         print(linha_divisoria)
         print()  
