@@ -1,7 +1,7 @@
 all:
 
 run:
-	python3 main.py
+	python3 bozo.py
 
 clean:
 	rm -rf __pycache__ *.pyc
