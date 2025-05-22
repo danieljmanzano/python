@@ -34,11 +34,13 @@ class Bozo:
             for rodada in range(Bozo.NRODADAS):
                 print(f"****** Rodada {rodada + 1}")
                 input("Pressione ENTER para lançar os dados")
-                
+                print()
+
                 # Primeira tentativa
                 rd.rolar()
                 print("1          2          3          4          5")
                 print(rd)
+                print()
 
                 # Segunda tentativa
                 print("Digite os números dos dados que quiser TROCAR. Separados por espaços.")
@@ -46,6 +48,7 @@ class Bozo:
                 rd.rolar_string(muda)
                 print("1          2          3          4          5")
                 print(rd)
+                print()
                 
                 # Terceira tentativa
                 print("Digite os números dos dados que quiser TROCAR. Separados por espaços.")
@@ -54,7 +57,7 @@ class Bozo:
                 print("1          2          3          4          5")
                 print(rd)
                 
-                print("\n\n")
+                print("\n\n\n")
                 print(pl)
                 
                 pos = 0

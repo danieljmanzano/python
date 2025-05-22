@@ -1,4 +1,4 @@
-import random
+from random import Random
 from dado import Dado
 
 class RolaDados:
@@ -7,20 +7,22 @@ class RolaDados:
     Operações como rolar alguns dos dados ou exibir o resultado de todos eles são implementadas.
     """
     
-    def __init__(self, n, seed=None):
+    def __init__(self, n, seed=0):
         """
         Construtor que cria e armazena vários objetos do tipo Dado.
         @param n: Número de dados a serem criados
         @param seed: Semente para criar dados. Se for 0 cria sem semente
         """
         self.dados = []
-        r = random.Random(seed)
+        if seed != 0:
+            rd = Random()
+            rd.seed(seed)
         
         for _ in range(n):
-            if seed is None:
+            if seed == 0:
                 self.dados.append(Dado())
             else:
-                self.dados.append(Dado(6, r.randint(0, 2**32-1)))
+                self.dados.append(Dado(6, rd.randint(1, 10000)))
     
     def rolar(self, quais=None):
         """

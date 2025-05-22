@@ -1,15 +1,17 @@
+from random import Random
 import random
 
 class Dado:
     # cria um dado. o padrão para o n (número de lados do dado) é 6 e para a seed (gerador para número aleatório) é 0
     def __init__(self, n=6, seed=0): 
-        self.n = n      
-        self.seed = random.seed(seed)
+        self.n = n
+        self.rd = random.Random(seed)
         self.atual = 0
+        self.rolar()
 
     # simula a rolagem de um dado. retorna um número aleatório que possa ser o valor do lado do dado
     def rolar(self):
-        self.atual = random.randint(1, self.n)
+        self.atual = self.rd.randint(1, self.n)
         return self.atual
 
     # retorna o valor do lado atual do dado

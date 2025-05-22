@@ -87,17 +87,18 @@ class Placar:
         s = ""
         for i in range(3):
             # Linha superior (posições 1-3, 7-9, 4-6)
-            num = f"{self.placar[i]:4d}" if self.taken[i] else f"({i+1}) "
-            s += f"{num}   |   "
+            num = f" {self.placar[i]:<3}" if self.taken[i] else f"({i+1}) "
+            s += num + "   |   "
             
-            num = f"{self.placar[i+6]:4d}" if self.taken[i+6] else f"({i+7}) "
-            s += f"{num}   |   "
+            num = f" {self.placar[i+6]:<3}" if self.taken[i+6] else f"({i+7}) "
+            s += num + "   |  "
             
-            num = f"{self.placar[i+3]:4d}" if self.taken[i+3] else f"({i+4}) "
-            s += f"{num}\n" + "-"*26 + "\n"
+            num = f" {self.placar[i+3]:<3}" if self.taken[i+3] else f"({i+4}) "
+            s += num + "\n-------|----------|-------\n"
         
         # Última linha (posição 10)
-        num = f"{self.placar[9]:4d}" if self.taken[9] else "(10)"
-        s += f"       |   {num}   |\n"
-        s += "       +----------+\n"
+        num = f" {self.placar[9]:<3}" if self.taken[9] else "(10)"
+        s += "       |   " + num + "   |"
+        s += "\n       +----------+\n"
         return s
+    
